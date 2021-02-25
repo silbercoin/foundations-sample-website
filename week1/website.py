@@ -1,11 +1,11 @@
 from flask import Flask
-from flask import render_template
+from flask import render_template, url_for,request, redirect
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=['GET','POST'])
 def index():
-    return render_template('index.html')
+    return render_template('base.html',page_title="Foundation Class")
 
 
 @app.route('/first-page')

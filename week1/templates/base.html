@@ -7,25 +7,36 @@
     <title> {{ page_title }}</title>
   	<meta charset="utf-8"/>
     <!-- include the css from the file static/style.css -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles.css')}}">
   </head>
   <body>
 
   <!-- this headline will appear on all pages. -->
   <header>
-    <div class="banner">
-      <h1> All about CODE </h1> 
-      <h3> A really great place. </h3>
-    </div>
+    <div class="container">
+      <h1>Hi, Foundation Class!</h1>
+      
   </header>
+
+  <nav id="navbar">
+    <div class="container">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/first-page">Post</a></li>
+        <li><a href="/second-page">Result</a></li>
+
+      </ul>
+    </div>
+  </nav>
 
   <!-- This is the part which will be different on each page. 
        see first-page.html for an example of using it -->
   <main>
+    
     {% block content%}
     {% endblock %}
   </main>
   <footer>
-    <h3> Made with love </h3>
+    <h3> Made with love  &copy; 2021 </h3>
   </footer>
   </body>
