@@ -20,5 +20,9 @@ def test_index():
         assert "<html>" in html_content
         # check that there is a header (ok, at least that there is an h1 tag)
         assert "<h1" in html_content
+        <h1>Hi, Foundation Class!</h1>
         # check that there is a at least two paragraph tags
         assert html_content.count("<p") >= 2
+        <p> This is the amazing stuff that will wind up on the first page I am making with a template. 
+    It looks simple - and it is, so far. Check out another page using the same base template <a href="/second-page">here</a>
+    </p>
