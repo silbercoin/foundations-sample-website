@@ -15,11 +15,14 @@ def get_color_code(color_name):
     color_hex_code = ""
     path = "/Users/code/Documents/foundation/foundations-sample-website/color_check/data/css-color-names.json"
 
-    with open(path, "r") as f:
-        csscolor = json.load(f)
-        if color_name in csscolor.keys():
-            color_hex_code = csscolor[color_name]
-        else:
-            return "does not exist"
+    try:
+        with open(path, "r") as f:
+            csscolor = json.load(f)
+            if color_name in csscolor.keys():
+                color_hex_code = csscolor[color_name]
+            else:
+                return "does not exist"
 
-    return color_hex_code
+        return color_hex_code
+    except FileNotFoundError as not_found:
+        print(not_found.filename)
