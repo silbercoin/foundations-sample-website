@@ -1,28 +1,24 @@
 from flask import Flask
-from flask import render_template, request, url_for, abort
+from flask import render_template, request, url_for
 from color_check.controllers.get_color_code import get_color_code
-from werkzeug.debug import get_current_traceback
+from werkzeug.exceptions import HTTPException
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def index():
-    try:
-        raise Exception("Can't connect to database")
-    except Exception, e:
-        track = get_current_traceback(
-            skip=1, show_hidden_frames=True, ignore_system_exceptions=False
-        )
-        track.log()
-        abort(500)
     return render_template("index.html", page_title="Color Check")
 
 
-@app.errorhandler(500)
-def internal_error(error):
+@app.errorhandler(Exception)
+def handle_exception(e):
+    # pass through HTTP errors. You wouldn't want to handle these generically.
+    if isinstance(e, HTTPException):
+        return e
 
-    return "500 error"
+    # now you're handling non-HTTP exceptions only
+    return render_template("500_generic.html", e=e), 500
 
 
 @app.route("/color", methods=["POST"])
@@ -46,4 +42,4 @@ def show_color():
 
 
 if __name__ == "__main__":
-    app.run(host="localhost", port=8080, debug=True)
+    app.run(host="localhost", port=8080, debug=False)
