@@ -13,7 +13,7 @@ def get_color_code(color_name):
     # Open the file at data/css-color-names.json, and return the hex code
     # The file can be considered as JSON format, or as a Python dictionary.
     color_hex_code = ""
-    path = "../data/css-color-names.json"
+    path = "/Users/code/Documents/foundation/foundations-sample-website/color_check/data/css-color-names.json"
 
     with open(path, "r") as colorfile:
         csscolor = json.load(colorfile)
