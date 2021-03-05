@@ -1,7 +1,8 @@
 from flask import Flask
 from flask import render_template, request, url_for
 from color_check.controllers.get_color_code import get_color_code
-from werkzeug.exceptions import HTTPException
+
+# from werkzeug.exceptions import HTTPException
 
 app = Flask(__name__)
 
@@ -11,7 +12,7 @@ def index():
     return render_template("index.html", page_title="Color Check")
 
 
-@app.errorhandler(Exception)
+"""@app.errorhandler(Exception)
 def handle_exception(e):
     # pass through HTTP errors. You wouldn't want to handle these generically.
     if isinstance(e, HTTPException):
@@ -19,6 +20,7 @@ def handle_exception(e):
 
     # now you're handling non-HTTP exceptions only
     return render_template("500_generic.html", e=e), 500
+    """
 
 
 @app.route("/color", methods=["POST"])
@@ -34,12 +36,16 @@ def show_color():
     # - create a log.txt file which records (logs) the user requests.
 
     user_submitted_string = request.form.get("color")
+    color_name = user_submitted_string.capitalize()
     color_hex_code = get_color_code(user_submitted_string)
 
     return render_template(
-        "color.html", page_title="Show Color", color_hex_code=color_hex_code
+        "color.html",
+        page_title="Show Color",
+        user_submitted_string=color_name,
+        color_hex_code=color_hex_code,
     )
 
 
 if __name__ == "__main__":
-    app.run(host="localhost", port=8080, debug=False)
+    app.run(host="localhost", port=8080, debug=True)

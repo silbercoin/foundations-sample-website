@@ -1,27 +1,27 @@
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin-left: 2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-left: 2rem;
 }
 
 .banner {
-    margin-top: 2rem;
-    color:navy;
-    border:black solid 2px;
-    margin-bottom: 1rem;
+  margin-top: 2rem;
+  color: navy;
+  border: black solid 2px;
+  margin-bottom: 1rem;
 }
-
 
 main {
-
-   background-color: lightsalmon;
+  background-color: lightsalmon;
 }
 main p {
-    text-align:center;
+  text-align: center;
+}
+main input {
+  color: plum;
 }
 
 footer {
-    margin-top: 5rem;
-    text-align: left;
-    color:rgb(57, 144, 216);
-    
+  margin-top: 5rem;
+  text-align: left;
+  color: rgb(57, 144, 216);
 }
