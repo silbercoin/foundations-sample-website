@@ -25,4 +25,4 @@ def get_color_code(color_name):
 
         return color_hex_code
     except FileNotFoundError:
-        print("what is going onnnnnn??")
+        print("why there is FileNotFoundError??")
