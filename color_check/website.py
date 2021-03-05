@@ -1,13 +1,28 @@
 from flask import Flask
-from flask import render_template, request, url_for
+from flask import render_template, request, url_for, abort
 from color_check.controllers.get_color_code import get_color_code
+from werkzeug.debug import get_current_traceback
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def index():
+    try:
+        raise Exception("Can't connect to database")
+    except Exception, e:
+        track = get_current_traceback(
+            skip=1, show_hidden_frames=True, ignore_system_exceptions=False
+        )
+        track.log()
+        abort(500)
     return render_template("index.html", page_title="Color Check")
+
+
+@app.errorhandler(500)
+def internal_error(error):
+
+    return "500 error"
 
 
 @app.route("/color", methods=["POST"])
@@ -31,4 +46,4 @@ def show_color():
 
 
 if __name__ == "__main__":
-    app.run(host="localhost", port=8080, debug=False)
+    app.run(host="localhost", port=8080, debug=True)

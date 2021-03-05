@@ -23,8 +23,3 @@ def get_color_code(color_name):
             return "does not exist"
 
     return color_hex_code
-
-
-# handle try except put here and fix it kinda..
-# normal Error handling
-#
