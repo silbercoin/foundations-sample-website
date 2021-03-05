@@ -8,7 +8,14 @@
   	<meta charset="utf-8"/>
     <!-- include the css from the file static/style.css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+      #colorcontainer {
+        background-color: {{color_hex_code}};
+      }
+    </style>
+
   </head>
+
   <body>
 
   <!-- this headline will appear on all pages. -->
@@ -22,6 +29,6 @@
     {% endblock %}
   </main>
   <footer>
-    <h3> wannnnn </h3>
+    <h3> wan did in 2021</h3>
   </footer>
   </body>
