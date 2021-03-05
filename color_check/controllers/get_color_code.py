@@ -24,5 +24,5 @@ def get_color_code(color_name):
                 return "does not exist"
 
         return color_hex_code
-    except FileNotFoundError as not_found:
-        print(not_found.filename)
+    except AssertionError:
+        print("what is going onnnnnn??")
