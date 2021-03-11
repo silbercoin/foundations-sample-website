@@ -13,10 +13,9 @@ def get_color_code(color_name):
     # Open the file at data/css-color-names.json, and return the hex code
     # The file can be considered as JSON format, or as a Python dictionary.
     color_hex_code = ""
-    path = "/Users/code/Documents/foundation/foundations-sample-website/color_check/data/css-color-names.json"
+    path = "/Users/code/Documents/foundation/foundations-sample-website/color_check/static/css-color-names.json"
 
-    try:
-        with open(path, "r") as f:
+    with open(path, "r") as f:
             csscolor = json.load(f)
             if color_name in csscolor.keys():
                 color_hex_code = csscolor[color_name]
@@ -24,5 +23,4 @@ def get_color_code(color_name):
                 return "does not exist"
 
         return color_hex_code
-    except FileNotFoundError:
-        print("why there is FileNotFoundError??")
+
