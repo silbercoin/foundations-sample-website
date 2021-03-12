@@ -12,17 +12,6 @@ def index():
     return render_template("index.html", page_title="Color Check")
 
 
-"""@app.errorhandler(Exception)
-def handle_exception(e):
-    # pass through HTTP errors. You wouldn't want to handle these generically.
-    if isinstance(e, HTTPException):
-        return e
-
-    # now you're handling non-HTTP exceptions only
-    return render_template("500_generic.html", e=e), 500
-    """
-
-
 @app.route("/color", methods=["POST"])
 def show_color():
     # When the user submits the form at /, the contents of the form
@@ -35,14 +24,13 @@ def show_color():
     # - if the color doesn't exist, give the user a useful error message.
     # - create a log.txt file which records (logs) the user requests.
 
-    user_submitted_string = request.form.get("color")
-    color_name = user_submitted_string.capitalize()
+    user_submitted_string = request.form["color"]
     color_hex_code = get_color_code(user_submitted_string)
 
     return render_template(
         "color.html",
         page_title="Show Color",
-        user_submitted_string=color_name,
+        user_submitted_string=user_submitted_string,
         color_hex_code=color_hex_code,
     )
 
